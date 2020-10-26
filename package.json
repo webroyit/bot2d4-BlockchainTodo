@@ -1,0 +1,20 @@
+{
+  "name": "blockchain-todo",
+  "version": "1.0.0",
+  "description": "Blockchain Todo List",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
