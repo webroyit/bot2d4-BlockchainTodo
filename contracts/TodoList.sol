@@ -12,6 +12,11 @@ contract TodoList {
         bool completed;
     }
 
+    // a function that is called when the smart contract for the first time
+    constructor() public {
+        createTask("Buy Candy");
+    }
+
     // mapping is like an associative array or a hash
     // uint will refer to the id of the task
     mapping(uint => Task) public tasks;
