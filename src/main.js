@@ -1,6 +1,7 @@
 App = {
     load: async () => {
         await App.loadWeb3();
+        await App.loadAccount();
     },
     // Connects to the blockchain
     loadWeb3: async () => {
@@ -33,7 +34,11 @@ App = {
         else {
             console.log('Non-Ethereum browser detected. You should consider trying MetaMask!')
         }
-    }
+    },
+    // Get the first account from metamask
+    loadAccount: async () => {
+        App.account = web3.eth.accounts[0];
+    },
 }
 
 $(() => {
