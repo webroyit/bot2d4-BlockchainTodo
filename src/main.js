@@ -2,6 +2,7 @@ App = {
     load: async () => {
         await App.loadWeb3();
         await App.loadAccount();
+        await App.loadContract();
     },
     // Connects to the blockchain
     loadWeb3: async () => {
@@ -39,6 +40,14 @@ App = {
     loadAccount: async () => {
         App.account = web3.eth.accounts[0];
     },
+    loadContract: async () => {
+        const todoList = await $.getJSON('TodoList.json');
+        // TruffleContract allow to you to call the function from the smart contract
+        App.contracts.TodoList = TruffleContract(todoList);
+        App.contracts.TodoList.setProvider(App.web3Provider);
+
+        App.todoList = await App.contracts.TodoList.deployed();
+    }
 }
 
 $(() => {
