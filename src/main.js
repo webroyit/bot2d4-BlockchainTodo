@@ -3,6 +3,7 @@ App = {
         await App.loadWeb3();
         await App.loadAccount();
         await App.loadContract();
+        await App.render();
     },
     // Connects to the blockchain
     loadWeb3: async () => {
@@ -47,6 +48,10 @@ App = {
         App.contracts.TodoList.setProvider(App.web3Provider);
 
         App.todoList = await App.contracts.TodoList.deployed();
+    },
+    render: async () => {
+        // Display the account address
+        $('#account').html(App.account);
     }
 }
 
