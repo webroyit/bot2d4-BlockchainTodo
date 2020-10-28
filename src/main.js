@@ -1,4 +1,7 @@
 App = {
+    loading: false,
+    contracts: {},
+
     load: async () => {
         await App.loadWeb3();
         await App.loadAccount();
@@ -50,8 +53,31 @@ App = {
         App.todoList = await App.contracts.TodoList.deployed();
     },
     render: async () => {
-        // Display the account address
+        // Prevent render twice
+        if(App.loading){
+            return;
+        }
+
+        App.setLoading(true);
+
+        // Display the account
         $('#account').html(App.account);
+
+        App.setLoading(false);
+
+    },
+    setLoading: (boolean) => {
+        App.loading = boolean;
+        const loader = $('#loader');
+        const content = $('#content');
+        if(boolean){
+            loader.show();
+            content.hide();
+        }
+        else{
+            loader.hide();
+            content.show();
+        }
     }
 }
 
