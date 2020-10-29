@@ -13,7 +13,15 @@ contract TodoList {
         bool completed;
     }
 
-    // a function that is called when the smart contract for the first time
+    // Event are triggered when something happens inside of a smart contract
+    // It let us know if the transaction is completed or if it is successful
+    event TaskCreated(
+        uint id,
+        string content,
+        bool completed
+    );
+
+    // A function that is called when the smart contract for the first time
     constructor() public {
         createTask("Buy Candy");
     }
@@ -25,5 +33,7 @@ contract TodoList {
     function createTask(string memory _content) public {
         taskCount ++;
         tasks[taskCount] = Task(taskCount, _content, false);
+
+        emit TaskCreated(taskCount, _content, false);
     }
 }
