@@ -1,4 +1,5 @@
 # Blockchain Todo list
+- Simple Todo List in blockchain.  The template is from Dapp University youtube channel.
 
 ## Note
 - Deploying smart contracts to the blockchain costs gas
